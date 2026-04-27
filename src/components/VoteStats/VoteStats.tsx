@@ -1,3 +1,4 @@
+ import type { Votes } from '../../types/votes';
 import css from './VoteStats.module.css'
 
 const VoteStats = ({ stats, total }: { stats: Votes; total: number }) => {
