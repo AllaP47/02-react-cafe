@@ -1,9 +1,27 @@
-import './VoteOptions.module.css'
+import { VoteType } from '../../types/votes';
+import css from './VoteOptions.module.css'
 
+interface VoteOptionsProps {
+  onVote: (type: VoteType) => void;
+  onReset: () => void;
+  total: number;
+}
 
-<div className={css.container}>
-  <button className={css.button}>Good</button>
-  <button className={css.button}>Neutral</button>
-  <button className={css.button}>Bad</button>
-  <button className={`${css.button} ${css.reset}`}>Reset</button>
-</div>
+const VoteOptions = ({ onVote, onReset, total }: VoteOptionsProps) => {
+
+  return (
+    <div className={css.container}>
+     <button className={css.btn} onClick={() => onVote('good')}>Good</button>
+      <button className={css.btn} onClick={() => onVote('neutral')}>Neutral</button>
+      <button className={css.btn} onClick={() => onVote('bad')}>Bad</button>
+     {total > 0 && (
+  <button className={`${css.button} ${css.reset}`} onClick={onReset}>
+    Reset
+  </button>
+)}
+    </div >
+  );
+
+};
+
+export default VoteOptions
